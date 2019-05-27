@@ -10,8 +10,8 @@ function newArrival() {
 
 function recentPost() {
   return [
-    {_id: 1, title: 'Game of Thrones: Season 7 Released', content: 'In Season 7, Daenerys Targaryen has finally set sail for Westeros with her armies, dragons and new Hand of the Queen, Tyrion Lannister. Jon Snow has been named King in the North after defeating Ramsay Bolton in the Battle of the Bastards and returning Winterfell to House Stark.'},
-    {_id: 2, title: 'Reading Beyond Earth Day', content: "Birds, by Robert Bateman and Kathryn Dean. About the book: At a time when bird species are disappearing rapidly, the poignant beauty of Robert Bateman's paintings is more urgent than ever. It reminds us why Bateman was compelled to study and paint his subjects and why we must work to secure their futures."},
+    {_id: 1, title: 'Game of Thrones: Season 7 Released', content: 'In Season 7, Daenerys Targaryen has finally set sail for Westeros with her armies, dragons and new Hand of the Queen, Tyrion Lannister. Jon Snow has been named King in the North after defeating Ramsay Bolton in the Battle of the Bastards and returning... '},
+    {_id: 2, title: 'Reading Beyond Earth Day', content: "Birds, by Robert Bateman and Kathryn Dean. About the book: At a time when bird species are disappearing rapidly, the poignant beauty of Robert Bateman's paintings is more urgent than ever. It reminds us why Bateman was compelled to study and paint his subjects..."},
     {_id: 3, title: 'Python Everyday', content: 'Python is a programming language that lets you work more quickly and integrate your systems more effectively. Python is powerful... and fast; plays well with others; runs everywhere; is friendly & easy to learn; is Open.'},
   ];
 }
@@ -51,7 +51,7 @@ function Home() {
               <div class="textContainer">
                 <h4>{blog.title}</h4>
                 <div id="recentPost_content">
-                  <p>{blog.content} <button type="button" class="button-more">More</button></p>
+                <p>{blog.content}<button type="button" class="button-more">More</button></p>
                 </div>
               </div>
             )
