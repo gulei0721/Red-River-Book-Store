@@ -6,6 +6,9 @@ import About from '../pages/about.jsx';
 import Contact from '../pages/contact.jsx';
 import Blog from '../pages/blog.jsx';
 import Footer from '../components/footer.jsx';
+import Genres from '../pages/product_genres.jsx';
+import ProductDetails from '../pages/product_details.jsx';
+import ProductSearch from '../pages/product_search.jsx';
 
 
 export default class MainLayout extends React.Component {
@@ -19,6 +22,9 @@ export default class MainLayout extends React.Component {
               <Route path = '/blog' component={Blog} />
               <Route path = '/about' component={About} />
               <Route path = '/contact' component={Contact} />
+              <Route exact path = '/Books' component={Genres} />
+              <Route exact path = '/Books/Product_details' component={ProductDetails} />
+              <Route exact path = '/Books/Product_search' component={ProductSearch} />
             </Switch>
           <Footer />
         </div>

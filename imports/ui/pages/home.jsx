@@ -1,10 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function newArrival() {
   return [
-    { _id: 1, name: 'Revengers', avatar: '/img/a_01.png', price : '$19.99' },
-    { _id: 2, name: 'Game of Thrones: Season 7', avatar: '/img/b_01.png', price : '$30.99' },
-    { _id: 3, name: 'Forks Over Knives: Flavor!', avatar: '/img/c_01.png', price : '$33.29' },
+    { _id: 1, name: 'Revengers', avatar: '/img/a_01.png', price : '$19.99', link: '' },
+    { _id: 2, name: 'Game of Thrones: Season 7', avatar: '/img/b_01.png', price : '$30.99', link: '' },
+    { _id: 3, name: 'Forks Over Knives: Flavor!', avatar: '/img/c_01.png', price : '$33.29', link: '/Books/Product_details' },
   ];
 }
 
@@ -35,7 +36,7 @@ function Home() {
             return (
               <div class="newArrival_container">
                 <img class='product_img' src={item.avatar} alt=""/>
-                <h3 class='product_name'>{item.name}</h3>
+                <h3 class='product_name'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" to={item.link}>{item.name}</NavLink></h3>
                 <p>{item.price}</p>
               </div>
             )

@@ -1,10 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, DropdownButton, Dropdown } from 'react-bootstrap';
-import { MDBCol, MDBFormInline, MDBIcon } from "mdbreact";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "bootstrap-css-only/css/bootstrap.min.css";
-import "mdbreact/dist/css/mdb.css";
 
 export default class Header extends React.Component {
   render() {
@@ -40,16 +35,16 @@ export default class Header extends React.Component {
                 <div class="dropdown-content">
                   <a class='a-b' href="#">Books
                     <ul class='ul-b'>
-                      <li class='li-b'>All Books</li>
-                      <li class='li-b'>Fiction</li>
-                      <li class='li-b'>Nonfiction</li>
-                      <li class='li-b'>Children</li>
+                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" to="/Books">All Books</NavLink></li>
+                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >Fiction</NavLink></li>
+                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >Nonfiction</NavLink></li>
+                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >Children</NavLink></li>
                     </ul>
                   </a>
                   <a class='a-b' href="#">Comics
                     <ul class='ul-b'>
-                      <li class='li-b'>All Comics</li>
-                      <li class='li-b'>Children</li>
+                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >All Comics</NavLink></li>
+                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >Children</NavLink></li>
                     </ul>
                   </a>
                   <a href="#">Musics</a>
@@ -59,38 +54,9 @@ export default class Header extends React.Component {
                 </div>
               </div>
             </li>
-            {/* <li class='nav-list'>Browse
-              <ul class='ul-a'>
-                <li class='li-b'>Books
-                  <ul class='ul-b'>
-                    <li>All Books</li>
-                    <li>Fiction</li>
-                    <li>Nonfiction</li>
-                    <li>Children</li>
-                  </ul>
-                </li>
-                <li class='li-b'>Comics
-                  <ul class='ul-b'>
-                  <li>All Comics</li>
-                  <li>Children</li>
-                  </ul>
-                </li>
-                <li class='li-b'>Musics</li>
-                <li class='li-b'>Movies</li>
-                <li class='li-b'>Video Games</li>
-                <li class='li-b'>MISC</li>
-              </ul>
-            </li> */}
-
-                {/* <li class='nav-list'>Browse</li> */}
-              {/* <li class='nav-list'><DropdownButton id="dropdown-maincategory" title="Browse">
-                      <p><Dropdown.Item href="#/action-1">Books</Dropdown.Item></p>
-                      <p><Dropdown.Item href="#/action-2">Comics</Dropdown.Item></p>
-                      <p><Dropdown.Item href="#/action-3">Miscellaneous</Dropdown.Item></p>
-              </DropdownButton></li> */}
-                <li class='nav-list'><NavLink style={{ textDecoration: 'none' }} activeClassName="active" to="/blog">Blog</NavLink></li>
-                <li class='nav-list'><NavLink style={{ textDecoration: 'none' }} activeClassName="active" to="/about">About</NavLink></li>
-                <li class='nav-list'><NavLink style={{ textDecoration: 'none' }} activeClassName="active" to="/contact">Contact</NavLink></li>
+            <li class='nav-list'><NavLink style={{ textDecoration: 'none' }} activeClassName="active" to="/blog">Blog</NavLink></li>
+            <li class='nav-list'><NavLink style={{ textDecoration: 'none' }} activeClassName="active" to="/about">About</NavLink></li>
+            <li class='nav-list'><NavLink style={{ textDecoration: 'none' }} activeClassName="active" to="/contact">Contact</NavLink></li>
 
           </ul>
         </div>

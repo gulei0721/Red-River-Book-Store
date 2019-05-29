@@ -127,7 +127,7 @@ margin-top: 20px;
     display: block;
   }
   .topnav li a:hover{
-    color: #D7D7D7;
+    color: #666;
   }
   a:link{color:inherit}
   a:active{color:inherit}
@@ -167,7 +167,7 @@ margin-top: 20px;
     display: block;
 }
 
-.newArrival_container {
+.newArrival_container, .mostpolular {
   width: 330px;
   height: 400px;
   margin-left: 50px;
@@ -217,7 +217,7 @@ display: block;
 
 }
 
-h2 {
+.aaa h2 {
 display: inline-block;
 color: #666;
 }
@@ -307,7 +307,7 @@ display: block;
 }
 
 
-.About, .Contact, .Blog{
+.About, .Contact, .Blog, .Genres, .ProductDetails, .ProductSearch {
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 20px;
@@ -375,4 +375,112 @@ display: block;
 iframe {
   width: 500px;
   height: 500px;
+}
+
+.Genres h1 {
+  color: #666;
+  padding: 50px;
+}
+
+.Genres td {
+  width: 300px;
+  height: 35px;;
+  font-size: 20px;
+  color: #666;
+}
+.Genres table {
+  text-align: center;
+}
+
+.genres-container {
+  padding-bottom: 50px;
+}
+
+.main {
+  display: flex;
+  width:100%;
+  justify-content:space-around;
+  align-items:flex-start;
+}
+
+.page {
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+.page li {
+  float:left;
+  width:30px;
+  height:30px;
+  border:1px solid #e6e6e6;
+  text-align: center;
+  line-height: 30px;
+  color:#333;
+  cursor:pointer;
+}
+  .page li:first-of-type, .page li:last-of-type{
+    width:auto;
+    padding:0 5px;
+  }
+  .page li:first-of-type{
+    margin-right:10px;
+  }
+  .page li:last-of-type{
+    margin-left:10px;
+  }
+  .page li::selection {
+    background-color: transparent;
+  }
+.pageactive{
+  color:#fff !important;
+  background: #54b0bd;
+  border-color:#54b0bd !important;
+}
+.nomore{
+  color:#b5b5b5 !important;
+}
+.ellipsis{
+  border:none !important;
+  margin:0 10px;
+  cursor: default !important;
+}
+/* Product Details */
+.product{
+  display: flex;
+}
+.product-image {
+  width: auto;
+  height: auto;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
+.product-details {
+  float:right;
+  margin-left: 60px;
+}
+.description {
+  margin-right:60px;
+}
+.author{
+  margin: 20px 10px 20px 10px;
+}
+/* Search Products */
+.search-product{
+  margin: 20px 20px 20px 20px;
+  display: inline-block;
+}
+.search-container {
+  /* text-align: center; */
+  padding-left: 85px;
+  padding-right: 85px;
+}
+.search-product-detail-image {
+  width:300px;
+  height:300px;
+  /* padding-left: 30px;
+  padding-right: 30px; */
+  margin-left: 15px;
+  margin-right: 15px;
 }
