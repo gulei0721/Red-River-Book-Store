@@ -22,7 +22,7 @@ function Home() {
     <div className='Home'>
 
       <div className="logo">
-        <img className='logo_img' src="img/hole.png"/>
+        <img className='logo_img' src="img/logo.png"/>
       </div>
       <section class='intro'>
         <p>We are a used Book Store in Winnipeg. We sells books, comics, DVDs, musics, games, and magazines. Also, we do trade in. Come and adventure more.</p>

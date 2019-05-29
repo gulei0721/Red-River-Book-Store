@@ -46,7 +46,7 @@ function ProductDetails() {
                 </div >
               )
             })}
-            <h5> 2 more Same Products: <NavLink activeClassName="none" to="/Books/Product_search">See all</NavLink> </h5>
+            <h5> 3 more Same Products: <NavLink activeClassName="none" to="/Books/Product_search">See all</NavLink> </h5>
             <br />
             <p className="description"> The first four-color Forks Over Knives cookbook: head chef Darshana Thacker offers 150 delicious, all-new, easy-to-prepare whole-food, plant-based recipes for internationally inspired meals.
               <br/>

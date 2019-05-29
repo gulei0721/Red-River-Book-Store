@@ -18,11 +18,11 @@ function ProductSearch() {
         <NavLink style={{ textDecoration: 'none' }} activeClassName="none" to="/">Home</NavLink> > <NavLink style={{ textDecoration: 'none' }} activeClassName="none" to="/Books">Books</NavLink> > Search Result
       </p>
       <h2> 4 Results for search </h2>
-      <div>
-        <p>Sorted by:
+      <div class='sort_search'>
+        <p>Sorted by : &nbsp;
           <select>
             <option value="Price: Low to High" selected="selected">Price: Low to High</option>
-            <option value="Price: High to Low">value="Price: High to Low"</option>
+            <option value="Price: High to Low">Price: High to Low</option>
             <option value="Newest Arrivals">Newest Arrivals</option>
           </select>
         </p>
