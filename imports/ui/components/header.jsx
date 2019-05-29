@@ -37,7 +37,7 @@ export default class Header extends React.Component {
                     <ul class='ul-b'>
                       <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" to="/Books">All Books</NavLink></li>
                       <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >Fiction</NavLink></li>
-                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >Nonfiction</NavLink></li>
+                      {/* <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >Historical Fiction</NavLink></li> */}
                       <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >Children</NavLink></li>
                     </ul>
                   </a>
@@ -45,11 +45,18 @@ export default class Header extends React.Component {
                     <ul class='ul-b'>
                       <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >All Comics</NavLink></li>
                       <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >Children</NavLink></li>
+                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >Young Adult Fiction</NavLink></li>
+                    </ul>
+                  </a>
+                  <a class='a-b' href="#">Video Games
+                    <ul class='ul-b'>
+                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >All Video Games</NavLink></li>
+                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >PS3</NavLink></li>
+                      <li class='li-b'><NavLink style={{ textDecoration: 'none' }} activeClassName="none" >XBOX</NavLink></li>
                     </ul>
                   </a>
                   <a href="#">Musics</a>
                   <a href="#">Movies</a>
-                  <a href="#">Video Games</a>
                   <a href="#">MISC</a>
                 </div>
               </div>

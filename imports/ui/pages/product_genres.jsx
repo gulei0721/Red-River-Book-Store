@@ -11,10 +11,17 @@ function mostPolular() {
 
 function genersLists() {
   return [
-    {name1: 'SCI-FI', name2: 'CANADIANA', name3: 'WAR', name4: 'OCCULT', name5: 'ECONOMICS' },
-    {name1: 'ARTS', name2: 'SPORTS', name3: 'POLITICS', name4: 'CHILDREN', name5: 'HEALTH' },
-    {name1: 'HORROR', name2: 'MYSTERY', name3: 'COOKING', name4: 'FICTION', name5: 'MYSTERY' },
-    {name1: 'MUSIC', name2: 'HISTORY', name3: 'CHILDCARE', name4: 'BIOGRAPHY', name5: 'HUMOUR' },
+    {name1: 'Fiction', name2: 'Historical Fiction', name3: 'Literature & Classics', name4: 'Erotica', name5: 'Mystery & Detective' },
+    {name1: 'Western', name2: 'Horror', name3: 'Science Fiction', name4: 'Fantasy', name5: 'True Crime' },
+    {name1: 'Young Adult Fiction', name2: 'Young Adult Non-fiction', name3: 'Humour', name4: 'Art', name5: 'Photography' },
+    {name1: 'Crafts', name2: 'Music', name3: 'Canadiana', name4: 'Winnipeg', name5: 'Prairie Provinces' },
+    {name1: 'Religion', name2: 'Philosophy', name3: 'Film', name4: 'Psychology', name5: 'New Age' },
+    {name1: 'Paranormal', name2: 'Indigenous', name3: 'Gender & Sex', name4: 'Politics & History', name5: 'War' },
+    {name1: 'Cooking', name2: 'Health', name3: 'Child Development', name4: 'Economics & Business', name5: 'Sports' },
+    {name1: 'Biography', name2: 'Science', name3: 'Gardening', name4: 'Animals', name5: 'Mathematics' },
+    {name1: 'Biology', name2: 'Chemistry', name3: 'Astronomy', name4: 'Geology', name5: 'Ecology' },
+    {name1: 'Physics', name2: 'Computers', name3: 'Electronics', name4: 'Engineering', name5: 'Home Repairs' },
+    {name1: 'Cars, Trains, Planes', name2: 'Magazines', name3: 'Miscellaneous', name4: '', name5: '' },
   ];
 }
 
