@@ -9,6 +9,8 @@ import Footer from '../components/footer.jsx';
 import Genres from '../pages/product_genres.jsx';
 import ProductDetails from '../pages/product_details.jsx';
 import ProductSearch from '../pages/product_search.jsx';
+import FileReader from '../pages/managedata.jsx';
+
 
 
 export default class MainLayout extends React.Component {
@@ -25,6 +27,7 @@ export default class MainLayout extends React.Component {
               <Route exact path = '/Books' component={Genres} />
               <Route exact path = '/Books/Product_details' component={ProductDetails} />
               <Route exact path = '/Books/Product_search' component={ProductSearch} />
+              <Route exact path = '/manage' component={FileReader} />
             </Switch>
           <Footer />
         </div>
