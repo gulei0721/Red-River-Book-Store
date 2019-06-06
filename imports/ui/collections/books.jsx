@@ -5,39 +5,11 @@ import { _ } from 'meteor/underscore';
 
 Meteor.methods({
   // ------------------------------------------------------------------------
-  // 'book.remove': function (book) {
-  //   check(book._id, String);
-  //   // don't allow delete if not admin
-  //   if (!Roles.userIsInRole(Meteor.userId(), ['admin'], 'myWonderfulTenant')) {
-  //     throw new Meteor.Error('Not Authorized', 'Not Authorized.');
-  //   }
-  //   // check roles and login credentials here
-  //   return Book.remove(book._id);
-  // },
-  // ------------------------------------------------------------------------
-  'updateBook' : function (book) {
-    check(book.Author, String);
-    check(book.title, String);
-    check(book.ISBN, String);
-    check(book.Format, String);
-    check(book.Pages, String);
-    check(book.Publisher, String);
-    check(book.genre, Match.Maybe(String)); // genre not required can be null
-    // check roles and login credentials here
-    return Book.update(book._id, {
-      $set: {
-        Author: book.Author,
-        Title: book.title,
-        ISBN: book.ISBN,
-        Format: book.Format,
-        Pages: book.Pages,
-        Publisher: book.Publisher,
-        genre: book.genre,
-      },
-    });
+  'removeBook': function (book) {
+    return Book.remove(book._id);
   },
   // ------------------------------------------------------------------------
-  'addBook' : function (book) {
+  'updateBook' : function (book) {
     // check(book.Author, String);
     // check(book.title, String);
     // check(book.ISBN, String);
@@ -45,15 +17,28 @@ Meteor.methods({
     // check(book.Pages, String);
     // check(book.Publisher, String);
     // check(book.genre, Match.Maybe(String)); // genre not required can be null
-    // check for roles and credentials here
+    return Book.update(book._id, {
+      $set: {
+        Author: book.Author,
+        Title: book.Title,
+        ISBN: book.ISBN,
+        Format: book.Format,
+        Pages: book.Pages,
+        Publisher: book.Publisher,
+        genre: book.Genre
+      },
+    });
+  },
+  // ------------------------------------------------------------------------
+  'addBook' : function (book) {
     return Book.insert({
       Author: book.Author,
-      Title: book.title,
+      Title: book.Title,
       ISBN: book.ISBN,
       Format: book.Format,
       Pages: book.Pages,
       Publisher: book.Publisher,
-      genre: book.genre,
+      genre: book.Genre
     });
   },
 });

@@ -304,7 +304,7 @@ display: block;
 }
 
 
-.About, .Contact, .Blog, .Genres, .ProductDetails, .ProductSearch, .FileReader {
+.About, .Contact, .Blog, .Genres, .ProductDetails, .ProductSearch, .BookManage, .Admin {
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 20px;
@@ -529,4 +529,18 @@ iframe {
 .sort_search {
   text-align: right;
   margin-bottom: 50px;
+}
+
+/* Manager Screen */
+.FileReader table {
+  max-width: 1400px;
+}
+
+.FileReader td {
+  width: 300px;
+}
+
+.FileReader td button {
+  width: 60px;
+  padding: 4px;
 }
