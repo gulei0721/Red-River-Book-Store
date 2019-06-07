@@ -3,6 +3,7 @@ import Papa from 'papaparse';
 import { Meteor } from 'meteor/meteor';
 import { Book } from '../collections/books.jsx'
 import { NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
 import {ToastsContainer, ToastsStore} from 'react-toasts';
 
 bookinfo = [];
@@ -13,7 +14,8 @@ export default class BookManage extends Component {
     this.state = {
       csvfile: undefined,
       printContent: undefined,
-      readData: Book.find({}).fetch(),
+      readData: undefined,
+      oneBook: undefined,
       deletedDate: undefined,
       isLoading: true,
       author: "",
@@ -28,7 +30,7 @@ export default class BookManage extends Component {
       style_form : {display:"none"}
     };
     this.updateData = this.updateData.bind(this);
-    this.printInfo = this.printInfo.bind(this);
+    // this.printInfo = this.printInfo.bind(this);
     this.printTable = this.printTable.bind(this);
   }
 
@@ -54,11 +56,11 @@ export default class BookManage extends Component {
     // console.log(bookinfo);
   }
 
-  printInfo() {
-    this.setState({
-      printContent: bookinfo
-    })
-  }
+  // printInfo() {
+  //   this.setState({
+  //     printContent: bookinfo
+  //   })
+  // }
 
   //insert function, add data from file to database
   addtoTable() {
@@ -94,7 +96,7 @@ export default class BookManage extends Component {
       this.setState({ style_form: { display: "block", } })
     // }
     this.setState({
-      readData: Book.find({"_id" : e.target.value}).fetch()
+      oneBook: Book.find({"_id" : e.target.value}).fetch()
     })
   }
 
@@ -113,23 +115,33 @@ export default class BookManage extends Component {
   }
 
   //display all data from uploaded file
-  printData() {
-    if(this.state.printContent){
-      return (
-        <div>
-          <ul>
-            {this.state.printContent.map((contentinfo) =>
-              <li>Author: {contentinfo.Author}</li>
-            )}
-          </ul>
-        </div>
-      );
+  // printData() {
+  //   if(this.state.printContent){
+  //     return (
+  //       <div>
+  //         <ul>
+  //           {this.state.printContent.map((contentinfo) =>
+  //             <li>Author: {contentinfo.Author}</li>
+  //           )}
+  //         </ul>
+  //       </div>
+  //     );
+  //   }
+  // }
+
+  CheckImgExists(imgurl) {
+    var ImgObj = new Image(); //if img exist
+    ImgObj.src = imgurl;
+    if (ImgObj.fileSize > 0 || (ImgObj.width > 0 && ImgObj.height > 0)) {
+    return true;
+    } else {
+    return false;
     }
   }
 
   //display all data from book table
   readformTable() {
-    // if(this.state.readData) {
+    if(this.state.readData) {
       return (
         <div>
           <table>
@@ -139,6 +151,9 @@ export default class BookManage extends Component {
               </tr>
               {Book.find({}).fetch().map((booksinfo) =>
                 <tr>
+                  { this.CheckImgExists("https://pictures.abebooks.com/isbn/"+booksinfo.ISBN+"-us-300.jpg")
+                  ? <td><img src={"https://pictures.abebooks.com/isbn/"+booksinfo.ISBN+"-us-300.jpg"} /></td>
+                  : <td><img src='/img/noImage.png' /></td>}
                   <td>{booksinfo.Author}</td>
                   <td>{booksinfo.Title}</td>
                   <td>{booksinfo.ISBN}</td>
@@ -154,45 +169,52 @@ export default class BookManage extends Component {
           </table>
         </div>
       )
-    // }
+    }
+  }
+
+  getData() {
+    this.setState({
+      readData: Book.find({}).fetch(),
+      isLoading: false
+    })
   }
 
   //update function, update all information from edited form
   editData(e) {
-    // e.preventDefault();
+    e.preventDefault();
     if(this.state.author=='') {
       this.setState({
-        author: this.state.readData[0].Author,
+        author: this.state.oneBook[0].Author,
       })
     }
     if(this.state.title=='') {
       this.setState({
-        title: this.state.readData[0].Title,
+        title: this.state.oneBook[0].Title,
       })
     }
     if(this.state.isbn=='') {
       this.setState({
-        isbn: this.state.readData[0].ISBN,
+        isbn: this.state.oneBook[0].ISBN,
       })
     }
     if(this.state.format=='') {
       this.setState({
-        format: this.state.readData[0].Format,
+        format: this.state.oneBook[0].Format,
       })
     }
     if(this.state.pages=='') {
       this.setState({
-        pages: this.state.readData[0].Pages,
+        pages: this.state.oneBook[0].Pages,
       })
     }
     if(this.state.publisher=='') {
       this.setState({
-        publisher: this.state.readData[0].Publisher,
+        publisher: this.state.oneBook[0].Publisher,
       })
     }
     if(this.state.genre=='') {
         this.setState({
-          genre: this.state.readData[0].Genre,
+          genre: this.state.oneBook[0].Genre,
         })
     }
     this.setState({
@@ -200,7 +222,7 @@ export default class BookManage extends Component {
     }, ()=>{
       ToastsStore.success("Successfully update item to the database!",5000);
       // Meteor.call('updateBook', this.state.readData);
-      Book.update(this.state.readData[0]._id, {
+      Book.update(this.state.oneBook[0]._id, {
         $set: {
           Author: this.state.author,
           Title: this.state.title,
@@ -212,8 +234,19 @@ export default class BookManage extends Component {
         },
       });
       this.printTable();
-      console.log(this.state.readData);
+      // console.log(this.state.readData);
       ToastsStore.success("Successfully update item to the database!",5000);
+      this.setState({
+        author: "",
+        title: "",
+        isbn: "",
+        format: "",
+        pages: "",
+        publisher: "",
+        genre: "",
+        style_form: { display: "none", }
+      })
+      return <Redirect to='/admin/book' />
     })
   }
 
@@ -263,24 +296,25 @@ export default class BookManage extends Component {
 
   // Form for editing one product information
   dataDetails() {
-    if(this.state.readData) {
+    if(this.state.oneBook) {
+      // console.log(Book.find({}));
       return (
         <div>
           <form onSubmit={this.editData.bind(this)}>
-            <p>Author: {this.state.readData[0].Author}</p>
-            <input type="text" name="Author"  onChange={this._changeValue.bind(this)} />
-            <p>Title: {this.state.readData[0].Title} </p>
-            <input type="text" name="Title"  onChange={this._changeValue.bind(this)} />
-            <p>ISBN: {this.state.readData[0].ISBN} </p>
-            <input type="text" name="ISBN" onChange={this._changeValue.bind(this)} />
-            <p>Format: {this.state.readData[0].Format} </p>
-            <input type="text" name="Format" onChange={this._changeValue.bind(this)} />
-            <p>Pages: {this.state.readData[0].Pages} </p>
-            <input type="text" name="Pages" onChange={this._changeValue.bind(this)} />
-            <p>Pulisher: {this.state.readData[0].Pulisher} </p>
-            <input type="text" name="Publisher" onChange={this._changeValue.bind(this)} />
-            <p>Genre: {this.state.readData[0].Genre} </p>
-            <input type="text" name="Genre" onChange={this._changeValue.bind(this)} />
+            <p>Author: {this.state.oneBook[0].Author}</p>
+            <input type="text" name="Author" value={this.state.author} onChange={this._changeValue.bind(this)} />
+            <p>Title: {this.state.oneBook[0].Title} </p>
+            <input type="text" name="Title" value={this.state.title} onChange={this._changeValue.bind(this)} />
+            <p>ISBN: {this.state.oneBook[0].ISBN} </p>
+            <input type="text" name="ISBN" value={this.state.isbn} onChange={this._changeValue.bind(this)} />
+            <p>Format: {this.state.oneBook[0].Format} </p>
+            <input type="text" name="Format" value={this.state.format} onChange={this._changeValue.bind(this)} />
+            <p>Pages: {this.state.oneBook[0].Pages} </p>
+            <input type="text" name="Pages" value={this.state.pages} onChange={this._changeValue.bind(this)} />
+            <p>Pulisher: {this.state.oneBook[0].Pulisher} </p>
+            <input type="text" name="Publisher" value={this.state.publisher} onChange={this._changeValue.bind(this)} />
+            <p>Genre: {this.state.oneBook[0].Genre} </p>
+            <input type="text" name="Genre" value={this.state.genre} onChange={this._changeValue.bind(this)} />
             <input type="submit" value='Submit'></input>
           </form>
       </div>
@@ -288,21 +322,20 @@ export default class BookManage extends Component {
     }
   }
 
-  onLoading() {
-    this.setState({
-      readData: Book.find({}).fetch(),
-      isLoading: false
-    })
+  componentDidMount() {
+    this.getData();
   }
 
   render() {
     // this.setState({
     //       readData: Book.find({}).fetch()
     //   }, ()=>{
-      console.log(this.state.readData);
+      // console.log(this.state.readData);
       return (
         this.state.isLoading
-        ? <div>{this.onLoading()}</div>
+        ? <div className="BookManage">
+            <h3>Loading...</h3>
+          </div>
         : <div className="BookManage">
           <h2>Import data file!</h2>
           <input
@@ -317,12 +350,12 @@ export default class BookManage extends Component {
           />
             <ToastsContainer store={ToastsStore}/> {/* Alert container */}
             <button onClick={this.importCSV}>Upload File</button>
-            <button onClick={this.printInfo}>Show Info</button>
+            {/* <button onClick={this.printInfo}>Show Info</button> */}
             <button onClick={this.addtoTable}>Add to table</button>
             <button onClick={this.printTable}>Show/Hide info</button>
-          <div>
+          {/* <div>
             {this.printData()}
-          </div>
+          </div> */}
           <div>
             <div className='dataTable' style={this.state.style_tb}>
               <h3>Data from Table</h3>

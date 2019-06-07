@@ -532,15 +532,20 @@ iframe {
 }
 
 /* Manager Screen */
-.FileReader table {
+.BookManage table {
   max-width: 1400px;
 }
 
-.FileReader td {
+.BookManage td {
   width: 300px;
 }
 
-.FileReader td button {
+.BookManage td button {
   width: 60px;
   padding: 4px;
+}
+
+.BookManage td img {
+  width: 60px;
+  height: 90px;
 }
